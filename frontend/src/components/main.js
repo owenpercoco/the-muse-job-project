@@ -9,6 +9,7 @@ export default class Main extends Component {
         super(props);
         this.state = {
             filter :{
+              title: '',
               company: '',
               level: 'all',
               location: '',
@@ -47,6 +48,14 @@ export default class Main extends Component {
           var tmp_list = [];
           var company_text = this.state.filter.company;
           var location_text = this.state.filter.location;
+          var title_text = this.state.filter.title;
+          if (title_text){
+            for (var i = 0; i < this.state.jobList.length; i++ ){
+                if(this.state.jobList[i].name.includes(title_text)){
+                            tmp_list.push(this.state.jobList[i]);
+                    }
+            }
+          }else{
           for (var i = 0; i < this.state.jobList.length; i++ ){
             if(this.state.jobList[i].company.name.includes(company_text) && this.state.jobList[i].location.includes(location_text)){
                 for (var j = 0; j < this.state.jobList[i].company.industry.length; j++){
@@ -66,6 +75,7 @@ export default class Main extends Component {
                 
             }
           }
+        }
           this.setState({
               displayList: tmp_list
           })

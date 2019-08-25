@@ -6,9 +6,9 @@ export default class Job extends Component {
       super(props);
       this.state = {
         expanded : false,
-        long_text: this.props.job.description.replace(/<\/?[^>]+(>|$)/g, ""),
-        text : this.props.job.description.substring(0, 100).replace(/<\/?[^>]+(>|$)/g, ""),
-        c_text : this.props.job.description.substring(0, 100).replace(/<\/?[^>]+(>|$)/g, ""),
+        long_text: this.props.job.description,
+        text : this.props.job.description.substring(0, 100) + '... ',
+        c_text : this.props.job.description.substring(0, 100) + '... ',
       };
      this.expandText = this.expandText.bind(this)
     }
@@ -42,9 +42,10 @@ export default class Job extends Component {
           <div className = "title-text">
             {this.props.job.name}
           </div>
-          <div className = "description-text">
-            {this.state.c_text}
-          </div>
+          <hr/>
+          <div className = "description-text"
+              dangerouslySetInnerHTML={{__html: this.state.c_text}}/>
+        
           <em className="company-text">{this.props.job.company.name}</em>
           </div>
         </div>

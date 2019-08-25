@@ -13,7 +13,14 @@ export default class Filter extends Component {
         <div  className="filter" >
           
             <form>
-            <div className="row">
+            <div className="row"> 
+            <div className="col">
+                    <input 
+                        name = "title"
+                        value = {this.props.data.title}
+                        onChange={this.props.handleInputChange}
+                        type="text" className="form-control" placeholder="Title"/>
+                </div>
                 <div className="col">
                     <input 
                         name = "company"
