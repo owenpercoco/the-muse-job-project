@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path, include             
 from rest_framework import routers                
 from jobboard import views          
-                  
+
 router = routers.DefaultRouter()                      
 router.register(r'jobs', views.JobView, 'job')     
 router.register(r'companies', views.CompanyView, 'company') 
+router.register(r'industries', views.IndustryView, 'industry') 
 
 urlpatterns = [
     path('admin/', admin.site.urls),         
